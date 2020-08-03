@@ -17,5 +17,7 @@ public class Cliente {
     private String nome;
 @Column (nullable = false, length = 10)
     private String telefone;
+@Column
+    private int pontosFidelidade;
 
 }

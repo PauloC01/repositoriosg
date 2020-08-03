@@ -1,4 +1,4 @@
-package com.sg.lanchessg.Controllers;
+package com.sg.lanchessg.ControllersAPIs;
 
 
 import com.sg.lanchessg.Model.Cliente;
@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController //isso define que é um controlador rest
-@RequestMapping("/cliente") //define um endpoint desse recurso, que no caso é /cliente
+@RequestMapping("/clientes") //define um endpoint desse recurso, que no caso é /cliente
 public class    ClienteController {
     @Autowired
     ClientRepository clientRepo;

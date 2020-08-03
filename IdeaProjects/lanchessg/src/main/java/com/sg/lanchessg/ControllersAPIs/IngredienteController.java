@@ -1,4 +1,4 @@
-package com.sg.lanchessg.Controllers;
+package com.sg.lanchessg.ControllersAPIs;
 
 
 
@@ -21,7 +21,7 @@ public class IngredienteController {
 
     @PostMapping(consumes = "application/json")
     public ResponseEntity<?>adicionaIngrediente(@RequestBody Ingredientes ingrediente) {
-        Ingredientes ingredienteSalvo = ingRepo.save(ingrediente);
+            Ingredientes ingredienteSalvo = ingRepo.save(ingrediente);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().replacePath("/ingredientes").path("/{id}").
                 buildAndExpand(ingredienteSalvo.getId()).toUri();
         return ResponseEntity.created(uri).build();
@@ -36,6 +36,10 @@ public ResponseEntity<List<Ingredientes>> listaIngredientes() {
 @GetMapping("/{id}")
     public ResponseEntity<Ingredientes> buscaporId(@PathVariable Integer id) {
         return ResponseEntity.ok().body(ingRepo.findById(id).get());
+    }
+    @GetMapping("listaIngredientes")
+    public List<Ingredientes> listarIngrediente(){
+        return this.ingRepo.findAll();
     }
 
 }

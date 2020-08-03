@@ -7,7 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EntityScan("com.sg.lanchessg.Model")
-@ComponentScan("com.sg.lanchessg.Controllers")
+@ComponentScan({
+		"com.sg.lanchessg.ControllersAPIs", "com.sg.lanchessg.RegrasdeServico"
+})
 @EnableJpaRepositories("com.sg.lanchessg.Repositories")
 @SpringBootApplication
 public class LanchessgApplication {

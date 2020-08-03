@@ -1,29 +1,31 @@
 package com.sg.lanchessg.Model;
 
 
-
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
+
 @Entity
 @Table
 @Data
 public class Lanches {
 
-   @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private String nome;
     @Column
     private BigDecimal Valor;
-
-//    private RetirarIngsEstoque(){
-//        return Ingredientes;  //aqui vou ter de fazer conexão com o banco de dados
-//                                 e alterar a tabela de estoque...de alguma forma
-//    }
+    @Column
+    private int qntLanches;
+    @JoinColumn
+    @OneToMany  //juntas os lanches à tabela de produtos
+    private List<Produtos> produtos;
+    @JoinColumn
+    @ManyToMany
+    private List<Ingredientes> ingredientes;
 
 }

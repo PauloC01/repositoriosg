@@ -1,4 +1,4 @@
-package com.sg.lanchessg.Controllers;
+package com.sg.lanchessg.ControllersAPIs;
 
 
 

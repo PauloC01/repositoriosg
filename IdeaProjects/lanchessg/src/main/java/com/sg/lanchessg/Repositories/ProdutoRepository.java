@@ -1,13 +1,11 @@
 package com.sg.lanchessg.Repositories;
 
-import com.sg.lanchessg.Model.Lanches;
+
+import com.sg.lanchessg.Model.Produtos;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface LancheRepository extends JpaRepository<Lanches, Integer> {
-
+public interface ProdutoRepository extends JpaRepository<Produtos, Integer> {
 }
