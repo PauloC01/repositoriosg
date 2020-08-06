@@ -20,14 +20,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Estoque {
     private final ComboRepository comboRepository;
-    private final ProdutoRepository produtoRepository;
     private final IngRepository ingRepository;
     private final LancheRepository lancheRepository;
 
     @Transactional //Mostra que essa parte do codigo só fara mundaças no DB se for completada com exito.
     public String listarEstoque() {
         List<Ingredientes> ingredientes = this.ingRepository.findAll();
-        List<Produtos> produtos = this.produtoRepository.findAll();
         List<Combo> combos = this.comboRepository.findAll();
         List<Lanches> lanches =  this.lancheRepository.findAll();
         String join;
@@ -37,11 +35,6 @@ public class Estoque {
             if (combo.getQuantidade() < 1) {
                 estoque.add(combo.getNome());
             }}
-            for (Produtos produto : produtos) {
-                if (produto.getQntProdutos() < 1) {
-                    estoque.add(produto.getNome());
-                }
-            }
             for (Ingredientes ingrediente : ingredientes) {
                 if (ingrediente.getQuantidadeIng() < 1) {
                     estoque.add(ingrediente.getNome());
@@ -51,7 +44,6 @@ public class Estoque {
                 if(lanche.getQntLanches()<1){
                     estoque.add(lanche.getNome());
                 }
-
             }
             for (int i = 0; i < estoque.size(); i++) {
                 t++;

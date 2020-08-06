@@ -27,7 +27,7 @@ public class Combo {
 
     @JoinColumn
     @OneToMany         //junta os combos na tabela de produtos
-    private List<Produtos> produtos;
+    private List<Lanches> produtos;
 
 
 
