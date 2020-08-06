@@ -15,8 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/ingredientes")
 public class IngredienteController {
-
-    @Autowired
     IngRepository ingRepo;
 
     @PostMapping(consumes = "application/json")
@@ -29,7 +27,6 @@ public class IngredienteController {
 
 @GetMapping
 public ResponseEntity<List<Ingredientes>> listaIngredientes() {
-
         return ResponseEntity.ok().body(ingRepo.findAll());
 }
 

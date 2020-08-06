@@ -8,6 +8,7 @@ import com.sg.lanchessg.Repositories.ComboRepository;
 import com.sg.lanchessg.Repositories.IngRepository;
 import com.sg.lanchessg.Repositories.LancheRepository;
 import com.sg.lanchessg.Repositories.ProdutoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,28 +16,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Service //marcou essa classe como uma provedora de serviços, ou simplesmente uma classe que contém regras.
+@Service //classe que contém regras, logica. ao invés de jogar essa responsabilidade para a API.
+@AllArgsConstructor
 public class Estoque {
     private final ComboRepository comboRepository;
     private final ProdutoRepository produtoRepository;
     private final IngRepository ingRepository;
     private final LancheRepository lancheRepository;
 
-    public Estoque(ComboRepository comboRepository, ProdutoRepository produtoRepository, IngRepository ingRepository, LancheRepository lancheRepository) {
-        this.comboRepository = comboRepository;             //Método construtor para o combo, ingredientes,
-        this.ingRepository = ingRepository;                 //e produto.
-        this.produtoRepository = produtoRepository;
-        this.lancheRepository = lancheRepository;
-    }
-
     @Transactional //Mostra que essa parte do codigo só fara mundaças no DB se for completada com exito.
-    public String listarEstoque0() {
+    public String listarEstoque() {
         List<Ingredientes> ingredientes = this.ingRepository.findAll();
         List<Produtos> produtos = this.produtoRepository.findAll();
         List<Combo> combos = this.comboRepository.findAll();
         List<Lanches> lanches =  this.lancheRepository.findAll();
         String join;
-        int tot = 0;
+        int t = 0;
         ArrayList<String> estoque = new ArrayList();
         for (Combo combo : combos) {
             if (combo.getQuantidade() < 1) {
@@ -59,10 +54,10 @@ public class Estoque {
 
             }
             for (int i = 0; i < estoque.size(); i++) {
-                tot++;
+                t++;
             }
             join = String.join(",", estoque);
-            estoque.add("Total de itens em falta: " + tot + "" + join);
+            estoque.add("Total de itens em falta: " + t + "" + join);
             String ultimaPosicao = estoque.get(estoque.size() - 1);
 
             return ultimaPosicao;

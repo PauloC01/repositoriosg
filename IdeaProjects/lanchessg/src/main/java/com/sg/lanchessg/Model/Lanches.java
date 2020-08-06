@@ -21,8 +21,8 @@ public class Lanches {
     private BigDecimal Valor;
     @Column
     private int qntLanches;
-    @JoinColumn
-    @OneToMany  //juntas os lanches à tabela de produtos
+    @JoinColumn //juntas os lanches à tabela de produtos
+    @OneToMany
     private List<Produtos> produtos;
     @JoinColumn
     @ManyToMany

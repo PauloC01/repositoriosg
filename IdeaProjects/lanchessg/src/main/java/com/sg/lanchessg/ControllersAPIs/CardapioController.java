@@ -11,10 +11,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/cardapio")
 public class CardapioController {
-    @Autowired
+//    @Autowired
 private CardapioService cardapioService;
 
-    @GetMapping(path = "teste")
+    @GetMapping
     public List<Lanches> listaCardapio() {
         return this.cardapioService.cardapio();
     }

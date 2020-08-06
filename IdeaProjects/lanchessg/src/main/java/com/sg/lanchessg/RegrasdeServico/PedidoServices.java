@@ -23,10 +23,9 @@ public class PedidoServices {
     public ComboRepository comboRepo;
     public ClientRepository clientRepo;
 
-
     @Transactional
     public Pedido fazerPedido(int tipoPedido, Pedido pedido) {
-        if (tipoPedido == 1) {
+        if (tipoPedido == 1) {          //poderia ser feito com switch case
             for (int i = 0; i < pedido.getLanches().size(); i++) {
                 PedidoServices pedidoLancheCompra = new PedidoServices(pedidoRepo, lancheRepo, comboRepo, clientRepo);
                 pedidoLancheCompra.CompraLanche(pedido);
@@ -66,21 +65,20 @@ public class PedidoServices {
         Optional<Cliente> bCliente = this.clientRepo.findById(pedido.getId_Cliente().getId());
         if (bCliente.isPresent() && bLanche.isPresent()) {
             Lanches lanches = bLanche.get();
-            if (lanches.getQntLanches() < 3) { //verificador de estoque baixo
-                System.out.println("Há lanches, porém o estoque está baixo");
-            } else if (lanches.getQntLanches() > 3) {
+            if (lanches.getQntLanches() > 3) {
                 lanches.setQntLanches(lanches.getQntLanches() - pedido.getQntLanches());
                 Cliente clienteActual = bCliente.get();
                 clienteActual.setPontosFidelidade(clienteActual.getPontosFidelidade() + pedido.getQntLanches());
-                System.out.println("Compra efetivada com sucesso");
+                System.out.println("Compra efetivada");
                 pedido.setQntLanches(pedido.getQntLanches() + 1);
                 pedidoRepo.save(pedido);
                 clientRepo.save(clienteActual);
                 return lancheRepo.save(lanches);
-                                                     }
+            } else if (lanches.getQntLanches() < 3 && lanches.getQntLanches() > 0 ) {
+                System.out.println("Há lanches, porém o estoque está baixo");
             if (lanches.getQntLanches() == 0) {  //
-                System.out.println("Lanche em falta no estoque !");
-            } else if (lanches.getQntLanches() < 0) {
+                System.out.println("Lanche em falta no estoque !");}
+            }else{
                 System.out.println("Quantidade inválida !"); }
         }
         return null;
@@ -91,9 +89,7 @@ public class PedidoServices {
         Optional<Cliente> bCliente = clientRepo.findById(pedido.getId_Cliente().getId());
         if (bCliente.isPresent() && bCombo.isPresent()) {
             Combo combo = bCombo.get();
-            if (combo.getQuantidade() < 2) {
-                System.out.println("Nível de estoque de" + combo.getNome() + " baixo");
-            } else if (combo.getQuantidade() > 3) {
+             if (combo.getQuantidade() > 3) {
                 combo.setQuantidade(combo.getQuantidade() - pedido.getQntCombos());
                 Cliente clienteActual = bCliente.get();
                 clienteActual.setPontosFidelidade(pedido.getQntLanches() + pedido.getQntCombos());
@@ -102,9 +98,12 @@ public class PedidoServices {
                 pedidoRepo.save(pedido);
                 clientRepo.save(clienteActual);
                 return comboRepo.save(combo);
-            } else if (combo.getQuantidade() == 0) {
+            }else if (combo.getQuantidade() < 2) {
+                System.out.println("Nível de estoque de" + combo.getNome() + " baixo");
+            }
+            else if (combo.getQuantidade() == 0) {
                 System.out.println("Combo em falta !");
-            } else if (combo.getQuantidade() < 0) {
+            } else{
                 System.out.println("Quantidade Inválida !");
             }
         }
