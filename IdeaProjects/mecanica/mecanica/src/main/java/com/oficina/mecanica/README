@@ -1,0 +1,43 @@
+Como executar no postman:
+
+        ###-CLIENTES-###
+- adicionar novo cliente (cliente/add).
+                * Especificar nome e telefone.
+
+- procurar cliente por id (cliente/{id}).
+- listar todos os clientes (cliente/lista).
+
+
+        ###-FUNCIONARIO-###
+- Adicionar novo funcionario (funcionario/add).
+                * Especificar nome e ocupação.
+
+- Listar funcionarios (funcionario/lista).
+- procurar funcionario por id (funcionario/{id}).
+
+
+
+        ###-ORCAMENTO-###
+- Fazer orçamento (orcamento/add).
+        * Especificar preço, descrição, status:
+                0-Aprovado;
+                1-Reprovado;
+                2-Em analise.
+                Funcionário e cliente.
+
+- Lista de orçamentos já feitos (orcamento/lista).
+- Buscar orçamento por id (orcamento/{id}).
+
+        ###-CARRO-###
+- Cadastrar um carro (carro/registrar).
+                * Especificar placa(7 Caracteres), modelo, marca, ano, cor, e dono.
+
+- Lista carros cadastrados (carro/lista).
+- Buscar carro por placa (carro/{id}).
+
+        ###-ORDEM DE SERVIÇO###
+- Para gerar uma ordem de serviço(/ordemServico)
+    *A ordem passará por uma validação de status do orçamento, que deve ser trocada por um UPDATE
+    no Orçamento. Se for o CLIENTE aprovar será entã gerada a ordem de serviço.
+
+
