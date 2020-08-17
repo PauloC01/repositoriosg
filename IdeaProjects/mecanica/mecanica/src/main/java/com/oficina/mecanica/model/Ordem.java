@@ -1,22 +1,19 @@
 package com.oficina.mecanica.model;
 
+import com.oficina.mecanica.model.ids.Ids;
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table
 @Data
-public class Ordem {
-    @Id
-    @GeneratedValue
-    private int id;
+public class Ordem extends Ids {
     @OneToOne
     @JoinColumn
     private Orcamento orcamento;
     @Column
     private LocalDate dataTemino;
     @Column
-    private LocalDate dataEntrega;
+    private byte diasTrabalhados;
 }

@@ -13,14 +13,17 @@ import java.util.Optional;
 public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
 
+    //add e update  de clientes
     public Funcionario addFuncionario(Funcionario funcionario) {
         return this.funcionarioRepository.save(funcionario);
     }
 
+    //lista todos os clientes
     public List listarFuncionarios() {
         return this.funcionarioRepository.findAll();
     }
 
+    //busca cliente por id
     public Funcionario funcionarioPorId(int id) {
         Optional<Funcionario> bFuncionarios = this.funcionarioRepository.findById(id);
         return bFuncionarios.get();

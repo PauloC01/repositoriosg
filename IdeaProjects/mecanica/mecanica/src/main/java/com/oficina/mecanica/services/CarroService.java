@@ -12,14 +12,15 @@ import java.util.Optional;
 public class CarroService {
     private CarroRepository carroRepository;
 
+    //add e update de carros
     public Carro addCarro(Carro carro) {
         return this.carroRepository.save(carro);
     }
-
+    //lista todos os carros
     public List listaCarro() {
         return this.carroRepository.findAll();
     }
-
+    //busca carros por id
     public Carro carroPorId(int id) {
         Optional<Carro> bCarro = this.carroRepository.findById(id);
         return bCarro.get();

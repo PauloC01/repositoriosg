@@ -1,20 +1,17 @@
 package com.oficina.mecanica.model;
 
 import com.oficina.mecanica.model.enums.StatusOrcamento;
+import com.oficina.mecanica.model.ids.Ids;
 import lombok.Data;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table
 @Data
-public class Orcamento  {
-    @Id
-    @GeneratedValue
-    private int id;
+public class Orcamento extends Ids {
     @Column
     private BigDecimal preco_orcado;
     @Column
@@ -28,7 +25,7 @@ public class Orcamento  {
     @Column
     private StatusOrcamento statusOrcamento;
     @Column
-    private byte diasEstimados;
+    public byte diasEstimadosTrabalho;
     @Column
-    public LocalDate dataInicio;
+    public LocalDate dataEntrada;
 }
