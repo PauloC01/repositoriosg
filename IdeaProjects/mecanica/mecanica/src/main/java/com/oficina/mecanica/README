@@ -14,7 +14,7 @@ IMPORTANTE:
 
 
 
-                -FUNCIONARIO-
+                -FUNCIONÁRIO-
 - Adicionar novo funcionario (funcionario/add).
                 * Especificar nome e ocupação.
 
@@ -22,7 +22,7 @@ IMPORTANTE:
 - procurar funcionários por id (funcionario/{id}).
 
 
-                -ORCAMENTO-
+                -ORÇAMENTO-
 - Fazer orçamento (orcamento/add).
         * Especificar preço, descrição, status:
                 0-Aprovado;
