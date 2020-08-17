@@ -10,7 +10,6 @@ IMPORTANTE:
                 * Especificar nome e telefone.
 
 - procurar cliente por id (cliente/{id}).
-                * Usar metodo GET
 - listar todos os clientes (cliente/lista).
 
 
@@ -20,7 +19,7 @@ IMPORTANTE:
                 * Especificar nome e ocupação.
 
 - Listar funcionarios (funcionario/lista).
-- procurar funcionario por id (funcionario/{id}).
+- procurar funcionários por id (funcionario/{id}).
 
 
                 -ORCAMENTO-
@@ -44,15 +43,15 @@ IMPORTANTE:
                  -ORDEM DE SERVIÇO-
 - Para gerar uma ordem de serviço(/ordemServico)
     *A ordem passará por uma validação de status do orçamento, que deve ser trocada por um UPDATE
-    no Orçamento. Se for o CLIENTE aprovar será entã gerada a ordem de serviço.
+    no Orçamento. Se for o CLIENTE aprovar será então gerada a ordem de serviço.
     *Devem ser passados como params o status e orcamento.
 
 
 RECOMMENDAÇÕES:
 * É indicado para melhor manuseio que sejam feitos primeiramente os cadastros dos funcionários, e clientes primeiro.
 
-* Se for necessário atualizar o cadastro de um cliente, informar o Id do mesno no metodo de cadastro para que não
-seja criado um novo cliente com o mesmo nome. O mesmo se aplica para qualquer outr cadastro.
+* Se for necessário atualizar o cadastro de um cliente, informar o Id do mesmo no método de cadastro para que não
+seja criado um novo cliente com o mesmo nome. O mesmo se aplica para qualquer outro cadastro.
 
 
 
